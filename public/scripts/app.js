@@ -1,28 +1,50 @@
 'use strict';
 
-// // ES5 arrow function
-// function square (x) {
-//     return x * x;
-// };
+// arguments object - no longer bound with arrow functions
 
-// console.log(square(3));
-
-// // ES6 arrow function
-// // const squareArrow = (x) => {
-// //     return x * x;
-// // };
-
-// const squareArrow = (x) => x * x;
-
-// console.log(squareArrow(8));
-
-var getFirstName = function getFirstName(firstName) {
-    return firstName.split(' ')[0];
+var add = function add(a, b) {
+    // console.log(arguments);
+    return a + b;
 };
 
-var getSecondName = function getSecondName(firstName) {
-    return firstName.split(' ')[0];
+console.log(add(12, 2, 1000));
+
+// (this) keyword - no longer bound
+
+
+var user = {
+    name: 'Andres',
+    cities: ['World', 'Earth', 'Aruba'],
+    printPLacesLived: function printPLacesLived() {
+        var _this = this;
+
+        // ES6 method definition syntax
+        return this.cities.map(function (city) {
+            return _this.name + ' has lived in ' + city;
+        });
+
+        // const that = this;
+        // console.log(this.name);
+        // console.log(this.cities);
+
+        this.cities.forEach(function (city) {
+            console.log(_this.name + ' had lived in ' + city);
+        });
+    }
 };
 
-console.log(getFirstName('Mike Smith'));
-console.log(getSecondName('Andres Haayen'));
+console.log(user.printPLacesLived());
+
+var multiplier = {
+    numbers: [2, 5, 6, 7],
+    multiplyBy: 20,
+    multiply: function multiply() {
+        var _this2 = this;
+
+        return this.numbers.map(function (number) {
+            return number * _this2.multiplyBy;
+        });
+    }
+};
+
+console.log(multiplier.multiply());
