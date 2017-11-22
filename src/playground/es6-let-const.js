@@ -12,8 +12,8 @@ console.log('nameConst', nameConst);
 
 // Block Scoping
 
-var fullName = 'Jen Haayen';
-let firstName;
+const fullName = 'Jen Haayen';
+const firstName;
 if(fullName) {
   firstName = fullName.split(' ')[0];
   console.log(firstName);
