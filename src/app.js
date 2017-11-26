@@ -28,6 +28,8 @@ const deleteElement = () => {
 
 const appRoot = document.getElementById('app');
 
+const numbers = [55, 101, 1000];
+
 const render = () => {
     const template = (
         <div>
@@ -37,8 +39,9 @@ const render = () => {
             <p>{app.options.length}</p>
             <button onClick ={deleteElement}>Remove All</button>
             <ol>
-                <li>Item One</li>
-                <li>Item Two</li>
+                {
+                    app.options.map((option) => <li key={option}>{option}</li>)
+                }
             </ol>
             <form onSubmit={onFormSubmit}>
                 <input type="text" name="option"/>
