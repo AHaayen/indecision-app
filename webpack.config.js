@@ -14,7 +14,7 @@ module.exports ={
             exclude: /node_modules/
         },{
             // how to setup css in webpack
-            test:/\.scss$/,
+            test:/\.s?css$/,
             use: [
                 'style-loader',
                 'css-loader',
