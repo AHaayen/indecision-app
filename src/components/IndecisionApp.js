@@ -24,7 +24,7 @@ export default class IndecisionApp extends React.Component {
     handlePick = () => {
         const randomNum = Math.floor(Math.random() * this.state.options.length);
         const option = this.state.options[randomNum];
-        this.setState(() => ({selectedOption: option}));
+        this.setState(() => ({ selectedOption: option }));
     };
     handleAddOption = (option) => {
         if (!option) {
@@ -56,7 +56,7 @@ export default class IndecisionApp extends React.Component {
         console.log('componentWillUnmount');
     }
 
-    
+
 
     render() {
         const subtitle = 'The computer was born to solve problems that did not exist before';
@@ -64,21 +64,24 @@ export default class IndecisionApp extends React.Component {
         return (
             <div>
                 <Header subtitle={subtitle} />
-                <Action
-                    hasOptions={this.state.options.length > 0}
-                    handlePick={this.handlePick}
-                />
-                <Options
-                    options={this.state.options}
-                    handleDeleteOptions={this.handleDeleteOptions}
-                    handleDeleteOption={this.handleDeleteOption}
-                />
-                <AddOptions
-                    handleAddOption={this.handleAddOption}
-                />
-                <OptionModal 
+                <div className="container">
+                    <Action
+                        hasOptions={this.state.options.length > 0}
+                        handlePick={this.handlePick}
+                    />
+                    <Options
+                        options={this.state.options}
+                        handleDeleteOptions={this.handleDeleteOptions}
+                        handleDeleteOption={this.handleDeleteOption}
+                    />
+                    <AddOptions
+                        handleAddOption={this.handleAddOption}
+                    />
+                </div>
+
+                <OptionModal
                     selectedOption={this.state.selectedOption}
-                    handleClearOption = {this.handleClearOption}
+                    handleClearOption={this.handleClearOption}
                 />
             </div>
         );
